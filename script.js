@@ -109,22 +109,28 @@ function textToMorse(inputText) {
 
 function vibrateMorseCode(morseCode) {
     let currentTime = 0;
+    
     for (let i = 0; i < morseCode.length; i++) {
+        setTimeout(() => {
+            if (morseCode[i] === '.') {
+                navigator.vibrate(200); 
+            } else if (morseCode[i] === '-') {
+                navigator.vibrate(500); 
+            } else if (morseCode[i] === ' ') {
+                navigator.vibrate(300);  
+            }
+        }, currentTime);
+
         if (morseCode[i] === '.') {
-            setTimeout(() => {
-                navigator.vibrate(200); // Vibration for dot
-            }, currentTime);
-            currentTime += 500; // Add delay between dots and dashes
+            currentTime += 500;  
         } else if (morseCode[i] === '-') {
-            setTimeout(() => {
-                navigator.vibrate(500); // Vibration for dash
-            }, currentTime);
-            currentTime += 1000; // Add delay between dots and dashes
+            currentTime += 1000; 
         } else if (morseCode[i] === ' ') {
-            currentTime += 1500; // Add space duration between words
+            currentTime += 1500; 
         }
     }
 }
+
 
 function playMorseCodeSound(morseCode) {
     const dotSound = new Audio('sound/dot.mp3');
@@ -135,18 +141,18 @@ function playMorseCodeSound(morseCode) {
     for (let i = 0; i < morseCode.length; i++) {
         setTimeout(() => {
             if (morseCode[i] === '.') {
-                dotSound.play(); // Play dot sound
+                dotSound.play();
             } else if (morseCode[i] === '-') {
-                dashSound.play(); // Play dash sound
+                dashSound.play(); 
             }
         }, currentTime);
 
         if (morseCode[i] === '.') {
-            currentTime += 500; // Add time delay for dot
+            currentTime += 500; //  time delay for dot
         } else if (morseCode[i] === '-') {
-            currentTime += 1000; // Add time delay for dash
+            currentTime += 1000; // time delay for dash
         } else if (morseCode[i] === ' ') {
-            currentTime += 1500; // Space between words
+            currentTime += 1500; // Space
         }
     }
 }
