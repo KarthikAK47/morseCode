@@ -17,11 +17,11 @@ function textToMorse(inputText) {
 function vibrateMorseCode(morseCode) {
     for (let i = 0; i < morseCode.length; i++) {
         if (morseCode[i] === '.') {
-            navigator.vibrate(200);  
+            navigator.vibrate(150);  
         } else if (morseCode[i] === '-') {
-            navigator.vibrate(500);  
-        } else if (morseCode[i] === ' ') {
             navigator.vibrate(300);  
+        } else if (morseCode[i] === ' ') {
+            navigator.vibrate(500);  
         }
     }
 }
